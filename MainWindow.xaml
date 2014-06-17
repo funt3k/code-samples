@@ -1,0 +1,42 @@
+<Window x:Class="KinectDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Kinect Gesture Demo" Height="700" Width="1000" MinHeight="700" MinWidth="1000" MaxHeight="700" MaxWidth="1000">
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Open" Executed="Open_Image"/>
+    </Window.CommandBindings>
+    <Grid Margin="10,0,10,10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33*"/>
+            <RowDefinition Height="463*"/>
+            <RowDefinition Height="153*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="65"/>
+            <ColumnDefinition Width="842*"/>
+            <ColumnDefinition Width="65"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.RowSpan="1">
+            <!-- Add a button for 'Open' to select files to view -->
+            <MenuItem Command="ApplicationCommands.Open" Height="34" Width="65"/>
+        </Menu>
+
+        <Label Margin="0,189,0,239" Name="brightness" Grid.Column="2" RenderTransformOrigin="0.508,-0.794" Grid.Row="1">Brightness</Label>
+        <Label Margin="1,191,0,234" Name="Contrast" Grid.Row="1">Contrast</Label>
+        <Label x:Name="Zoom" Grid.Column="1" Margin="361,420,361,10" RenderTransformOrigin="0.282,0.484" Content="          Zoom" Grid.Row="1"/>
+        
+        <RichTextBox Name="text_box" IsReadOnly="True" AllowDrop="False" 
+      IsUndoEnabled="False" TextChanged="RichTextBox_TextChanged" Grid.Column="1" MinHeight="100" MaxHeight="200" Grid.Row="2"/>
+        <Button x:Name="contrast_up" Margin="1,6,841,284" Grid.Row="1" Grid.ColumnSpan="2" Content="UP" Click="contrast_up_Click"/>
+        <Button x:Name="contrast_down" Margin="1,236,841,55" Grid.Row="1" Grid.ColumnSpan="2" Content="DOWN" Click="contrast_down_Click"/>
+        <Button x:Name="brite_up" Margin="0,6,0,284" Content="UP" Grid.Column="2" Grid.Row="1" Click="brite_up_Click"/>
+        <Button x:Name="brite_down" Margin="0,236,0,55" Content="DOWN" Grid.Column="2" Grid.Row="1" Click="brite_down_Click"/>
+        <Button x:Name="zoom_out" Content="OUT" Grid.Column="1" Margin="193,420,486,10" Grid.Row="1" Click="zoom_out_Click"/>
+        <Button x:Name="zoom_in" Content="IN" Grid.Column="1" Margin="486,420,193,10" Grid.Row="1" Click="zoom_in_Click"/>
+        
+        <Border Grid.Column="1" Grid.Row="1" BorderThickness="1" BorderBrush="Black" Margin="0,6,10,55" HorizontalAlignment="Right" Width="822" Name="border" ClipToBounds="True">
+            <Image Name="main_img" Margin="1,1,1,1" Grid.Column="1" Grid.RowSpan="2" Opacity="1" RenderTransformOrigin="0.5,0.5"  />
+         
+        </Border>
+    </Grid>
+</Window>
